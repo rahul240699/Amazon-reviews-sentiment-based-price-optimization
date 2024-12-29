@@ -1,0 +1,27 @@
+export DATA_BUCKET="gs://<your-bucket-name>/data"
+export file_location="Clothing_Shoes_and_Jewelry.jsonl"
+export meta_file_location="meta_Clothing_Shoes_and_Jewelry.jsonl"
+
+
+
+gcloud dataproc jobs 
+
+spark-submit Review-based--price-optimization.py \
+    --cluster=my-dataproc-cluster \
+    --region=us-central1 \
+    --properties=DATA_BUCKET=gs://<your-bucket-name>,DATA_LOCATION=us-central1
+
+gsutil cp install_textblob.sh gs://<your-bucket-name>/scripts/install_textblob.sh
+
+gsutil cp /<file-location>/Clothing_Shoes_and_Jewelry.jsonl gs://<your-bucket-name>/data/
+
+
+./google-cloud-sdk/bin/gcloud dataproc clusters create <your-cluster-name> --enable-component-gateway --bucket <your-bukcet-name> \
+ --region us-central1 --master-machine-type n2-standard-2 --master-boot-disk-type pd-balanced \
+ --initialization-actions=gs://<your-bucket-name>/scripts/install_textblob.sh \
+ --master-boot-disk-size 32 --num-workers 2 --worker-machine-type n2-standard-2 --worker-boot-disk-type pd-balanced \
+ --worker-boot-disk-size 32 --image-version 2.2-debian12 --project <your-project-name>
+
+
+
+
