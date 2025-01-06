@@ -31,7 +31,7 @@ You can find the dataset here: [Amazon Reviews Dataset](https://huggingface.co/d
 
 1. **Upload the Tables**:
 
-    - First, upload the `All_Beauty.jsonl` and `meta_All_Beauty.jsonl` files to the `/FileStore/tables` directory in Databricks.
+    - First, upload the `All_Beauty.jsonl` and `meta_All_Beauty.jsonl` files to the `/FileStore/tables` directory in the Databricks.
 
 2. **Import the Notebook**:
 
